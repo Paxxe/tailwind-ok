@@ -23,7 +23,7 @@
 
               <div class="py-2 ">proova
                    <ul>
-                  {% assign related_collections = current_collection.metafields.custom.subcategory %}
+                  {% assign related_collections = collection.metafields.custom.subcategory %}
                   {% for collection_handle in related_collections %}
                     {% assign collection = collections[collection_handle] %}
                     <li>
