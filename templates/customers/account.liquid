@@ -5,9 +5,9 @@
 
 
 
-{% if customer.metafields.custom.promo_code %}
+{% if customer.metafields.custom.promo %}
   <h3>Il tuo codice promozionale</h3>
-  <p>Usa il seguente codice sconto per ottenere uno sconto: <strong>{{ customer.metafields.custom.promo_code }}</strong></p>
+  <p>Usa il seguente codice sconto per ottenere uno sconto: <strong>{{ customer.metafields.custom.promo }}</strong></p>
 {% else %}
   <p>Non hai codici sconto attivi.</p>
 {% endif %}
