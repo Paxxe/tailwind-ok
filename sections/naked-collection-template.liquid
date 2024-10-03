@@ -40,6 +40,7 @@
                   {% endif %}
                 </ul>
                 </div>
+              <p>Collezioni correlate: {{ related_collections | json }}</p>
   
               
                 {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
