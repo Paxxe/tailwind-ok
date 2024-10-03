@@ -20,7 +20,7 @@
               <div class="py-2 ">
             {% assign child_collection = collection.metafields.custom.subcategory.value %}
             {% for collection in child_collection %}
-              {{ collection.title }}
+             <a href="{{ collection.url }}"> {{ collection.title }} </a>
             {% endfor %}
 
 
