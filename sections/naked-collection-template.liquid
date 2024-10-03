@@ -18,25 +18,18 @@
 
 
               <div class="py-2 ">
-                 {% assign subcategories = collection.metafields.custom.subcategory %}
+                {% assign collection_ids = "632000315729,627110936913,627110838609,626807341393" | split: ',' %}
 
-                {% if subcategories %}
-                  <h3>Sottocategorie</h3>
-                  <ul>
-                    {% for collection_id in collection_ids %}
-                      {% assign collection = collections[collection_id] %}
-                      {% if collection %}
-                        <li>
-                          <a href="{{ collection.url }}">{{ collection.title }}</a>
-                        </li>
-                      {% endif %}
-                    {% endfor %}
-                  </ul>
-                {% else %}
-                  <p>Nessuna sottocategoria trovata per questa collezione.</p>
-                {% endif %}
-<p>Contenuto di subcategory: {{ collection.metafields.custom.subcategory }}</p>
-
+<ul>
+  {% for collection_id in collection_ids %}
+    {% assign collection = collections[collection_id] %}
+    {% if collection %}
+      <li>
+        <a href="{{ collection.url }}">{{ collection.title }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
               </div>
 
 
