@@ -7,26 +7,22 @@
         {%- assign column_amount = 'grid gap-6 md:grid-cols-4 grid-cols-1' -%}
 {%- endcase -%}
 
+
 {% paginate collection.products by 12 %}
   <div class="py-2 max-w-5xl m-auto pt-8">
     <h1 class="text-6xl pb-8">{{ collection.title }}</h1>
-    <div class="{{ column_amount }}">
-        {% for product in collection.products %}
-            <div class="bg-white shadow-md rounded-md overflow-hidden">
-                <a href="{{ product.url | within: collection }}" class="pt-4 px-4 block">
-                    <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-                </a>    
-                <div class="py-2 text-center">
-                    <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-                    <p class="pb-2">{{ product.price | money }}</p>
-                </div>
 
-              <div class="py-2 ">
+
+
+
+
+
+              <div class="py-2 ">proova
                   {% assign subcategories = collection.metafields.custom.subcategory %}
 
 
-                erere
-            
+                
+                  {% if subcategories %}
                     <h3>Sottocategorie</h3>
                     <ul>
                       {% for collection_handle in subcategories %}
@@ -40,11 +36,24 @@
                         {% endif %}
                       {% endfor %}
                     </ul>
-              
+                  {% else %}
+                    <p>Nessuna sottocategoria trovata per questa collezione.</p>
+                  {% endif %}
                 </div>
 
-  
-              
+
+
+    
+    <div class="{{ column_amount }}">
+        {% for product in collection.products %}
+            <div class="bg-white shadow-md rounded-md overflow-hidden">
+                <a href="{{ product.url | within: collection }}" class="pt-4 px-4 block">
+                    <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+                </a>    
+                <div class="py-2 text-center">
+                    <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                    <p class="pb-2">{{ product.price | money }}</p>
+                </div>
                 {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
             </div>
         {% else %}
