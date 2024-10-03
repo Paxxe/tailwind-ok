@@ -23,14 +23,12 @@
                 {% if subcategories %}
                   <h3>Sottocategorie</h3>
                   <ul>
-                    {% for collection_handle in subcategories %}
-                      {% assign subcategory_collection = collections[collection_handle] %}
-                      {% if subcategory_collection %}
+                    {% for collection_id in collection_ids %}
+                      {% assign collection = collections[collection_id] %}
+                      {% if collection %}
                         <li>
-                          <a href="{{ subcategory_collection.url }}">{{ subcategory_collection.title }}</a>
+                          <a href="{{ collection.url }}">{{ collection.title }}</a>
                         </li>
-                      {% else %}
-                        <li>Collezione non trovata</li>
                       {% endif %}
                     {% endfor %}
                   </ul>
