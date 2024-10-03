@@ -24,12 +24,20 @@
               <div class="py-2 ">proova
                    <ul>
                   {% assign related_collections = collection.metafields.custom.subcategory %}
-                  {% for collection_handle in related_collections %}
-                    {% assign collection = collections[collection_handle] %}
-                    <li>
-                      <a href="{{ collection.url }}">{{ collection.title }}</a>
-                    </li>
-                  {% endfor %}
+                  {% if related_collections %}
+                    <ul>
+                      {% for collection_handle in related_collections %}
+                        {% assign related_collection = collections[collection_handle] %}
+                        {% if related_collection %}
+                          <li>
+                            <a href="{{ related_collection.url }}">{{ related_collection.title }}</a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    <p>Nessuna collezione correlata trovata.</p>
+                  {% endif %}
                 </ul>
                 </div>
   
