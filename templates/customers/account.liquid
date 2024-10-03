@@ -1,5 +1,19 @@
 <!-- /templates/customers/account.liquid -->
 
+<br>
+<br><br><br>
+
+
+
+{% if customer.metafields.custom.promo_code %}
+  <h3>Il tuo codice promozionale</h3>
+  <p>Usa il seguente codice sconto per ottenere uno sconto: <strong>{{ customer.metafields.custom.promo_code }}</strong></p>
+{% else %}
+  <p>Non hai codici sconto attivi.</p>
+{% endif %}
+
+
+
 {% if customer.default_address %}
   <h2>Address</h2>
   <p>{{ customer.default_address.address1 }}</p>
