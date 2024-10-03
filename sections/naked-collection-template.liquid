@@ -37,6 +37,9 @@
 {% else %}
   <p>Nessuna sottocategoria trovata per questa collezione.</p>
 {% endif %}
+
+
+                <p>Subcategory content: {{ collection.metafields.custom.subcategory | json }}</p>
               </div>
 
 
