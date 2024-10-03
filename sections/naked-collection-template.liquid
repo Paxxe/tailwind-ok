@@ -7,7 +7,6 @@
         {%- assign column_amount = 'grid gap-6 md:grid-cols-4 grid-cols-1' -%}
 {%- endcase -%}
 
-jkhjghj
 {% paginate collection.products by 12 %}
   <div class="py-2 max-w-5xl m-auto pt-8">
     <h1 class="text-6xl pb-8">{{ collection.title }}</h1>
@@ -21,6 +20,20 @@ jkhjghj
                     <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
                     <p class="pb-2">{{ product.price | money }}</p>
                 </div>
+
+              <div class="py-2 ">
+                   <ul>
+                  {% assign related_collections = current_collection.metafields.custom.subcategory %}
+                  {% for collection_handle in related_collections %}
+                    {% assign collection = collections[collection_handle] %}
+                    <li>
+                      <a href="{{ collection.url }}">{{ collection.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+                </div>
+  
+              
                 {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
             </div>
         {% else %}
