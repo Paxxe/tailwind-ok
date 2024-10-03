@@ -27,6 +27,13 @@
                         {{ 'register' | customer_register_link }}
                     {% endif %}
                 {% endif %}
+
+
+              {% if customer %}
+                <a href="/account" class="my-account-link">Il mio account</a>
+              {% else %}
+                <a href="/account/login" class="login-link">Accedi</a>
+              {% endif %}
             </div>
         </div>
     </nav>
