@@ -24,18 +24,12 @@
   {% for gid in gids %}
     {% assign collection_id = gid | split: '/' | last %}
     {% assign collection = collections[collection_id] %}
-    {% if collection %}
-      <li>
-        <a href="{{ collection.url }}">{{ collection.title }}</a>
-      </li>
-    {% else %}
-      <li>Collezione non trovata</li>
-    {% endif %}
+     <p>Subcategory content: {{ collections[collection_id] }}</p>
   {% endfor %}
 </ul>
 
 
-                <p>Subcategory content: {{ collection.metafields.custom.subcategory }}</p>
+               
               </div>
 
 
