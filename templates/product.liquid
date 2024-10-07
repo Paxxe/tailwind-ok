@@ -20,16 +20,16 @@
 
 
 
-{% assign linked_product_id = product.metafields.custom.product_variation %}
+{% assign linked_product_handle = product.metafields.custom.product_variation %}
 
-{% if linked_product_id %}
-  {% assign linked_product = all_products[linked_product_id] %}
+{% if linked_product_handle %}
+  {% assign linked_product = all_products[linked_product_handle] %}
   
   {% if linked_product %}
     <div class="linked-product">
       <h3>Prodotto correlato: {{ linked_product.title }}</h3>
 
-      <!-- Visualizza il colore -->
+      <!-- Visualizza il colore (supponiamo che sia nella prima opzione del prodotto collegato) -->
       <p>Colore: {{ linked_product.options_with_values[0].values[0] }}</p>
 
       <!-- Visualizza l'immagine del prodotto collegato -->
