@@ -18,6 +18,33 @@
           <h1 class="text-6xl mb-8 text-gray-700">{{ product.title }}</h1>
           <div class="mb-8">{{ product.description }}</div>
 
+
+
+{% assign linked_product_id = product.metafields.custom.product_variation %}
+
+{% if linked_product_id %}
+  {% assign linked_product = all_products[linked_product_id] %}
+  
+  {% if linked_product %}
+    <div class="linked-product">
+      <h3>Prodotto correlato: {{ linked_product.title }}</h3>
+
+      <!-- Visualizza il colore -->
+      <p>Colore: {{ linked_product.options_with_values[0].values[0] }}</p>
+
+      <!-- Visualizza l'immagine del prodotto collegato -->
+      <div class="linked-product-image">
+        <img src="{{ linked_product.featured_image | img_url: 'compact' }}" alt="{{ linked_product.title }}">
+      </div>
+    </div>
+  {% else %}
+    <p>Il prodotto collegato non è disponibile.</p>
+  {% endif %}
+{% else %}
+  <p>Nessun prodotto collegato trovato.</p>
+{% endif %}
+
+          
           <!-- Form del prodotto -->
           <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="mb-2">
 
