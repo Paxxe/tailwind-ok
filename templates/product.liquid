@@ -21,46 +21,19 @@
             <div class="grid grid-cols-2">
               <div class="border-r pr-8 border-gray-300">
                 <p class="text-1xl mb-2">{{ current_variant.price | money }}</p>
-               
-
-
-
-
-                              <label for="color">Scegli un colore:</label>
-                <select id="color" name="option1">
-                  {% assign colors = '' %}
+                <select name="id" id="productSelect" class="bg-white shadow-md rounded-md p-2 mb-4 block w-full">
                   {% for variant in product.variants %}
                     {% if variant.available %}
-                      {% assign color = variant.option1 %}
-                      {% if colors contains color %}
-                        {% continue %}
-                      {% else %}
-                        <option value="{{ variant.option1 }}">{{ variant.option1 }}</option>
-                        {% assign colors = colors | append: color | append: ',' %}
-                      {% endif %}
+                      <option value="{{ variant.id }}">
+                        {{ variant.title }} - {{ variant.price | money_with_currency }}
+                      </option>
+                    {% else %}
+                      <option disabled="disabled">
+                        {{ variant.title }} - sold out
+                      </option>
                     {% endif %}
                   {% endfor %}
                 </select>
-              
-                <!-- Selettore Taglia -->
-                <label for="size">Scegli una taglia:</label>
-                <select id="size" name="option2">
-                  {% assign sizes = '' %}
-                  {% for variant in product.variants %}
-                    {% if variant.available %}
-                      {% assign size = variant.option2 %}
-                      {% if sizes contains size %}
-                        {% continue %}
-                      {% else %}
-                        <option value="{{ variant.option2 }}">{{ variant.option2 }}</option>
-                        {% assign sizes = sizes | append: size | append: ',' %}
-                      {% endif %}
-                    {% endif %}
-                  {% endfor %}
-                </select>
-
-
-                
               </div>
               <div class="pl-8">
                 <label for="Quantity" class="block text-1xl mb-2">quantity</label>
